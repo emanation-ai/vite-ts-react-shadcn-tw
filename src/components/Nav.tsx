@@ -10,6 +10,8 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
+import { Link } from 'react-router-dom';
+
 export interface IComponent {
   title: string;
   href: string;
