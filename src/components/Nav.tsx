@@ -48,7 +48,7 @@ export function NavigationMenuDemo({ dropdown_menus, buttons }: INavData) {
         ))}
         {buttons.map((button, index) => (
           <NavigationMenuItem key={index}>
-            <Link href={button.href} legacyBehavior passHref>
+            <Link to={button.href}>
               <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                 {button.title}
               </NavigationMenuLink>
