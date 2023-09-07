@@ -1,22 +1,15 @@
-import { Metadata } from 'next';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from 'react-router-dom';
 
 import { cn } from '@/lib/utils';
-import { buttonVariants } from '@/components/new-york/ui/button';
+import { buttonVariants } from '@/components/ui/button';
 import { UserAuthForm } from '@/components/app/user-auth-form';
-
-export const metadata: Metadata = {
-  title: 'Authentication',
-  description: 'Authentication forms built using the components.',
-};
 
 function App() {
   return (
     <>
       <div className="container relative h-[800px] flex-col items-center justify-center pt-48 md:pt-0 md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
-          href="/examples/authentication"
+          to="/examples/authentication"
           className={cn(
             buttonVariants({ variant: 'ghost' }),
             'absolute right-4 top-4 md:right-8 md:top-8'
@@ -66,14 +59,14 @@ function App() {
             <p className="px-8 text-center text-sm text-muted-foreground">
               By clicking continue, you agree to our{' '}
               <Link
-                href="/terms"
+                to="/terms"
                 className="underline underline-offset-4 hover:text-primary"
               >
                 Terms of Service
               </Link>{' '}
               and{' '}
               <Link
-                href="/privacy"
+                to="/privacy"
                 className="underline underline-offset-4 hover:text-primary"
               >
                 Privacy Policy
