@@ -15,7 +15,7 @@ import { Sidebar } from "./components/app/sidebar"
 import { listenNowAlbums, madeForYouAlbums } from "./data/albums.json"
 import { playlists } from "./data/playlists.json"
 
-export default function MusicPage() {
+function App() {
   return (
     <>
       <div className="md:block">
@@ -130,3 +130,4 @@ export default function MusicPage() {
     </>
   )
 }
+export default App;

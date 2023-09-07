@@ -1,11 +1,10 @@
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/new-york/ui/button"
-import { ScrollArea } from "@/components/new-york/ui/scroll-area"
-
-import { Playlist } from "../../data/playlists"
+import { Button } from "@/components/ui/button"
+import { ScrollArea } from "@/components/ui/scroll-area"
+import { playlists } from "../../data/playlists.json"
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
-  playlists: Playlist[]
+  playlists: typeof playlists
 }
 
 export function Sidebar({ className, playlists }: SidebarProps) {

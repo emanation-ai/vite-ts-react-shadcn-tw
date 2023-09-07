@@ -1,6 +1,4 @@
-import Image from "next/image"
 import { PlusCircledIcon } from "@radix-ui/react-icons"
-
 import { cn } from "@/lib/utils"
 import {
   ContextMenu,
@@ -11,13 +9,12 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/components/new-york/ui/context-menu"
-
-import { Album } from "../../data/albums"
-import { playlists } from "../../data/playlists"
+} from "@/components/ui/context-menu"
+import { listenNowAlbums } from "../../data/albums.json"
+import { playlists } from "../../data/playlists.json"
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
-  album: Album
+  album: typeof listenNowAlbums[number]
   aspectRatio?: "portrait" | "square"
   width?: number
   height?: number
@@ -36,7 +33,7 @@ export function AlbumArtwork({
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="overflow-hidden rounded-md">
-            <Image
+            <img
               src={album.cover}
               alt={album.name}
               width={width}
