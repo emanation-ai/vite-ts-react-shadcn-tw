@@ -6,7 +6,7 @@ import navData from './data/navigation_bar.json';
 function App() {
   return (
     <main>
-      <div className="bg-white">
+      <div className="bg-white text-black">
         <nav
           className="flex items-center justify-center pt-6 lg:px-8"
           aria-label="Global"
@@ -20,22 +20,22 @@ function App() {
           ></div>
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div className="text-center">
-              <h1 className="text-4xl font-bold tracking-tight text-gray-100 sm:text-6xl">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
                 {heroData.title}
               </h1>
-              <p className="mt-6 text-lg leading-8 text-gray-200">
+              <p className="mt-6 text-lg leading-8">
                 {heroData.subtitle}
               </p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="#"
-                  className="rounded-md bg-white text-black border px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-white border px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   {heroData.call_to_action}
                 </a>
                 <a
                   href="#"
-                  className="text-sm font-semibold leading-6 text-gray-300 px-3.5 py-2.5"
+                  className="text-sm font-semibold leading-6 px-3.5 py-2.5"
                 >
                   {heroData.secondary_call_to_action}{' '}
                   <span aria-hidden="true">→</span>
@@ -54,7 +54,7 @@ function App() {
           <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
             {footerData.columns.map((c) => (
               <div key={c.title}>
-                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">
+                <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
                   {c.title}
                 </h2>
                 <ul className="text-gray-500 dark:text-gray-400 font-medium">
