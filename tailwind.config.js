@@ -7,12 +7,6 @@ module.exports = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
   ],
-  theme: {
-    extend: {
-      colors: {
-        black: '#1e1e1e',
-      },
-    },
-  },
+  theme: {},
   plugins: [require('tailwindcss-animate')],
 };
