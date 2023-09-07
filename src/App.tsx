@@ -6,7 +6,7 @@ import navData from './data/navigation_bar.json';
 function App() {
   return (
     <main>
-      <div className="bg-black">
+      <div className="bg-white">
         <nav
           className="flex items-center justify-center pt-6 lg:px-8"
           aria-label="Global"
@@ -29,13 +29,13 @@ function App() {
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="#"
-                  className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  className="rounded-md bg-white text-black border px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
                   {heroData.call_to_action}
                 </a>
                 <a
                   href="#"
-                  className="text-sm font-semibold leading-6 text-gray-300"
+                  className="text-sm font-semibold leading-6 text-gray-300 px-3.5 py-2.5"
                 >
                   {heroData.secondary_call_to_action}{' '}
                   <span aria-hidden="true">→</span>
