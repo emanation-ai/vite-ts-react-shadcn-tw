@@ -82,11 +82,11 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
             <CommandList>
               <CommandInput placeholder="Search team..." />
               <CommandEmpty>No team found.</CommandEmpty>
-              {groups.map((group) => (
-                <CommandGroup key={group.label} heading={group.label}>
-                  {group.teams.map((team) => (
+              {groups.map((group, i) => (
+                <CommandGroup key={`${group.label}-${i}`} heading={group.label}>
+                  {group.teams.map((team, i: number) => (
                     <CommandItem
-                      key={team.value}
+                      key={`${group.label}-${team.label}-${i}`}
                       onSelect={() => {
                         setSelectedTeam(team);
                         setOpen(false);
@@ -157,8 +157,8 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                   />
                 </SelectTrigger>
                 <SelectContent>
-                  {create_team.subscription_plans.map((plan) => (
-                    <SelectItem key={plan.value} value={plan.value}>
+                  {create_team.subscription_plans.map((plan, i) => (
+                    <SelectItem key={`${plan.value}-${i}`} value={plan.value}>
                       <span className="font-medium">{plan.title}</span> -{" "}
                       <span className="text-muted-foreground">
                         {plan.pricing_description}
