@@ -1,0 +1,36 @@
+{
+  "recent_sales": [
+    {
+      "name": "Olivia Martin",
+      "email": "olivia.martin@email.com",
+      "amount": "+$1,999.00",
+      "avatar_src": "/avatars/01.png",
+      "avatar_alt": "Olivia Martin Avatar",
+      "avatarFallback": "OM"
+    },
+    {
+      "name": "Jackson Lee",
+      "email": "jackson.lee@email.com",
+      "amount": "+$39.00",
+      "avatar_src": "/avatars/02.png",
+      "avatar_alt": "Jackson Lee Avatar",
+      "avatarFallback": "JL"
+    },
+    {
+      "name": "Isabella Nguyen",
+      "email": "isabella.nguyen@email.com",
+      "amount": "+$299.00",
+      "avatar_src": "/avatars/03.png",
+      "avatar_alt": "Isabella Nguyen Avatar",
+      "avatarFallback": "IN"
+    },
+    {
+      "name": "William Kim",
+      "email": "will@email.com",
+      "amout": "+$99.00",
+      "avatar_src": "/avatars/04.png",
+      "avatar_alt": "William Kim Avatar",
+      "avatarFallback": "WK"
+    }
+  ]
+}

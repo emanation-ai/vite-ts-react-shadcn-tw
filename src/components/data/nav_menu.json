@@ -1,0 +1,20 @@
+{
+  "links": [
+    {
+      "href": "/examples/dashboard",
+      "label": "Overview"
+    },
+    {
+      "href": "/examples/dashboard",
+      "label": "Customer"
+    },
+    {
+      "href": "/examples/dashboard",
+      "label": "Products"
+    },
+    {
+      "href": "/examples/dashboard",
+      "label": "Settings"
+    }
+  ]
+}
