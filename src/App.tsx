@@ -1,19 +1,14 @@
-import { PlusCircledIcon } from "@radix-ui/react-icons"
-import { Button } from "@/components/ui/button"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
-import { Separator } from "@/components/ui/separator"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs"
-import { AlbumArtwork } from "./components/app/album-artwork"
-import { Menu } from "./components/app/menu"
-import { PodcastEmptyPlaceholder } from "./components/app/podcast-empty-placeholder"
-import { Sidebar } from "./components/app/sidebar"
-import { listenNowAlbums, madeForYouAlbums } from "./data/albums.json"
-import { playlists } from "./data/playlists.json"
+import { PlusCircledIcon } from "@radix-ui/react-icons";
+import { Button } from "@/components/ui/button";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { AlbumArtwork } from "./components/app/album-artwork";
+import { Menu } from "./components/app/menu";
+import { PodcastEmptyPlaceholder } from "./components/app/podcast-empty-placeholder";
+import { Sidebar } from "./components/app/sidebar";
+import { listenNowAlbums, madeForYouAlbums } from "./data/albums.json";
+import { playlists } from "./data/playlists.json";
 
 function App() {
   return (
@@ -128,6 +123,6 @@ function App() {
         </div>
       </div>
     </>
-  )
+  );
 }
 export default App;
