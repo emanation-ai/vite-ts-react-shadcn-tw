@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 import { cn } from "@/lib/utils";
-import { links } from "../data/nav_menu.json";
+import { links } from "../../data/nav_menu.json";
 
 export function MainNav({
   className,

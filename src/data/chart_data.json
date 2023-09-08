@@ -1,4 +1,8 @@
 {
+  "chart_header": {
+    "title": "Overview",
+    "subtitle": "Sales per month"
+  },
   "chart_data": [
     {
       "name": "Jan",

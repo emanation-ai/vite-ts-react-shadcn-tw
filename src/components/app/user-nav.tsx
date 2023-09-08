@@ -1,5 +1,5 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { user, menus, menus_other } from "../data/user_nav.json";
+import { user, menus, menus_other } from "../../data/user_nav.json";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,

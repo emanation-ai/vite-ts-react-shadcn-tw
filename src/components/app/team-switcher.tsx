@@ -41,7 +41,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { groups, create_team } from "../data/user_teams.json";
+import { groups, create_team } from "../../data/user_teams.json";
 
 type Team = (typeof groups)[number]["teams"][number];
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<

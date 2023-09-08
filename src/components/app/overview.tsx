@@ -1,7 +1,7 @@
 "use client";
 
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import { chart_data } from "../data/chart_data.json";
+import { chart_data } from "../../data/chart_data.json";
 
 export function Overview() {
   return (

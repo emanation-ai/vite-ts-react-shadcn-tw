@@ -1,4 +1,8 @@
 {
+  "sales_header": {
+    "title": "Recent Sales",
+    "subtitle": "You made 200 sales this month"
+  },
   "recent_sales": [
     {
       "name": "Olivia Martin",
@@ -27,7 +31,7 @@
     {
       "name": "William Kim",
       "email": "will@email.com",
-      "amout": "+$99.00",
+      "amount": "+$99.00",
       "avatar_src": "/avatars/04.png",
       "avatar_alt": "William Kim Avatar",
       "avatarFallback": "WK"
