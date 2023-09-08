@@ -8,7 +8,7 @@ export function RecentSales() {
         <div key={index} className="flex items-center">
           <Avatar className="flex h-9 w-9 items-center justify-center space-y-0 border">
             <AvatarImage src={sale.avatar_src} alt={sale.avatar_alt} />
-            <AvatarFallback>{sale.avatarFallback}</AvatarFallback>
+            <AvatarFallback>{sale.avatar_fallback}</AvatarFallback>
           </Avatar>
           <div className="ml-4 space-y-1">
             <p className="text-sm font-medium leading-none">{sale.name}</p>
