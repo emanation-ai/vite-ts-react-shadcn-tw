@@ -1,0 +1,15 @@
+{
+  "branding": {
+    "company_name": "Acme Inc",
+    "testimony_quote": "This library has saved me countless hours of work and helped me deliver stunning designs to my clients faster than ever before.",
+    "testimony_author": "Sofia Davis"
+  },
+  "login": {
+    "login_button_label": "Login",
+    "login_button_link": "/examples/authentication"
+  },
+  "signup": {
+    "signup_title": "Create an AppName account",
+    "signup_subtitle": "Enter your email below to create your account"
+  }
+}
