@@ -1,7 +1,7 @@
-import { NavigationMenuDemo } from '@/components/Nav';
-import footerData from './data/footer_section.json';
-import heroData from './data/hero_section.json';
-import navData from './data/navigation_bar.json';
+import { NavigationMenuDemo } from "@/components/Nav";
+import footerData from "./data/footer_section.json";
+import heroData from "./data/hero_section.json";
+import navData from "./data/navigation_bar.json";
 
 function App() {
   return (
@@ -23,9 +23,7 @@ function App() {
               <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
                 {heroData.title}
               </h1>
-              <p className="mt-6 text-lg leading-8">
-                {heroData.subtitle}
-              </p>
+              <p className="mt-6 text-lg leading-8">{heroData.subtitle}</p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="#"
@@ -37,7 +35,7 @@ function App() {
                   href="#"
                   className="text-sm font-semibold leading-6 px-3.5 py-2.5"
                 >
-                  {heroData.secondary_call_to_action}{' '}
+                  {heroData.secondary_call_to_action}{" "}
                   <span aria-hidden="true">→</span>
                 </a>
               </div>
