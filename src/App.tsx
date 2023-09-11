@@ -1,16 +1,50 @@
-import { PlusCircledIcon } from "@radix-ui/react-icons";
-import { Button } from "@/components/ui/button";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-import { Separator } from "@/components/ui/separator";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlbumArtwork } from "./components/app/album-artwork";
-import { Menu } from "./components/app/menu";
-import { PodcastEmptyPlaceholder } from "./components/app/podcast-empty-placeholder";
-import { Sidebar } from "./components/app/sidebar";
-import { listenNowAlbums, madeForYouAlbums } from "./data/albums.json";
-import { playlists } from "./data/playlists.json";
+import { useContext } from 'react'
+import { PlusCircledIcon } from '@radix-ui/react-icons'
+import { Button } from '@/components/ui/button'
+import { ScrollArea, ScrollBar } from '@/components/ui/scroll-area'
+import { Separator } from '@/components/ui/separator'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { AlbumArtwork } from './components/app/album-artwork'
+import { Menu } from './components/app/menu'
+import { PodcastEmptyPlaceholder } from './components/app/podcast-empty-placeholder'
+import { Sidebar } from './components/app/sidebar'
+import {
+  IAlbumCard,
+  IListenNowAlbumsContext,
+  IMadeForYouAlbumsContext,
+} from '@/interfaces'
+import { ListenNowContext } from '@/contexts/ListenNowAlbumsContext'
+import { MadeForYouAlbumContext } from '@/contexts/MadeForYouAlbumsContext'
 
 function App() {
+  let { topAlbums, setTopAlbums } = useContext<IListenNowAlbumsContext>(
+    ListenNowContext,
+  )
+  let { madeForYouAlbums, setMadeForYouAlbums } = useContext<
+    IMadeForYouAlbumsContext
+  >(MadeForYouAlbumContext)
+  let addTopAlbum: IAlbumCard = {
+    name: 'React Rendezvous',
+    artist: 'Ethan Byte',
+    cover:
+      'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=300&dpr=2&q=80',
+  }
+  let addMadeForYouAlbum: IAlbumCard = {
+    name: 'Thinking Components',
+    artist: 'Lena Logic',
+    cover:
+      'https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80',
+  }
+
+  const handleAddMusic = () => {
+    let updatedTopAlbums: IAlbumCard[] = [...topAlbums]
+    let updatedMadeForYouAlbums: IAlbumCard[] = [...madeForYouAlbums]
+    updatedTopAlbums.push(addTopAlbum)
+    updatedMadeForYouAlbums.push(addMadeForYouAlbum)
+    setTopAlbums((topAlbums = updatedTopAlbums))
+    setMadeForYouAlbums((madeForYouAlbums = updatedMadeForYouAlbums))
+  }
+
   return (
     <>
       <div className="md:block">
@@ -18,7 +52,7 @@ function App() {
         <div className="border-t">
           <div className="bg-background">
             <div className="grid lg:grid-cols-5">
-              <Sidebar playlists={playlists} className="hidden lg:block" />
+              <Sidebar className="hidden lg:block" />
               <div className="col-span-3 lg:col-span-4 lg:border-l">
                 <div className="h-full px-4 py-6 lg:px-8">
                   <Tabs defaultValue="music" className="h-full space-y-6">
@@ -33,7 +67,7 @@ function App() {
                         </TabsTrigger>
                       </TabsList>
                       <div className="ml-auto mr-4">
-                        <Button>
+                        <Button onClick={() => handleAddMusic()}>
                           <PlusCircledIcon className="mr-2 h-4 w-4" />
                           Add music
                         </Button>
@@ -56,10 +90,10 @@ function App() {
                       <Separator className="my-4" />
                       <div className="relative">
                         <ScrollArea>
-                          <div className="flex space-x-4 pb-4">
-                            {listenNowAlbums.map((album) => (
+                          <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pb-4">
+                            {topAlbums.map((album, index: number) => (
                               <AlbumArtwork
-                                key={album.name}
+                                key={`${album.name}${index}`}
                                 album={album}
                                 className="w-[250px]"
                                 aspectRatio="portrait"
@@ -82,10 +116,10 @@ function App() {
                       <Separator className="my-4" />
                       <div className="relative">
                         <ScrollArea>
-                          <div className="flex space-x-4 pb-4">
-                            {madeForYouAlbums.map((album) => (
+                          <div className="grid lg:grid-cols-6 md:grid-cols-2 grid-cols-1 gap-4 pb-4">
+                            {madeForYouAlbums.map((album, index: number) => (
                               <AlbumArtwork
-                                key={album.name}
+                                key={`${album.name}${index}`}
                                 album={album}
                                 className="w-[150px]"
                                 aspectRatio="square"
@@ -123,6 +157,6 @@ function App() {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default App;
+export default App
