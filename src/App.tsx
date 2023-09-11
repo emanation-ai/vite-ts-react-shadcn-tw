@@ -1,9 +1,18 @@
-import { NavigationMenuDemo } from "@/components/Nav";
-import footerData from "./data/footer_section.json";
-import heroData from "./data/hero_section.json";
-import navData from "./data/navigation_bar.json";
+import { NavigationMenuDemo } from '@/components/Nav'
+import { useContext } from 'react'
+import { HomePageContext } from './context/HomeContext'
+import { IHomePageContext } from './interface'
 
 function App() {
+  const {
+    headerNavigation,
+    heroBannerTitle,
+    heroBannerDesc,
+    heroPrimaryCallToAction,
+    heroSecondaryCallToAction,
+    footerNavigation,
+  } = useContext<IHomePageContext>(HomePageContext)
+
   return (
     <main>
       <div className="bg-white text-black">
@@ -11,7 +20,7 @@ function App() {
           className="flex items-center justify-center pt-6 lg:px-8"
           aria-label="Global"
         >
-          <NavigationMenuDemo {...navData} />
+          <NavigationMenuDemo buttons={headerNavigation} />
         </nav>
         <div className="relative isolate px-6 pt-14 lg:px-8">
           <div
@@ -21,22 +30,21 @@ function App() {
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-                {heroData.title}
+                {heroBannerTitle}
               </h1>
-              <p className="mt-6 text-lg leading-8">{heroData.subtitle}</p>
+              <p className="mt-6 text-lg leading-8">{heroBannerDesc}</p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="#"
                   className="rounded-md bg-white border px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  {heroData.call_to_action}
+                  {heroPrimaryCallToAction}
                 </a>
                 <a
                   href="#"
                   className="text-sm font-semibold leading-6 px-3.5 py-2.5"
                 >
-                  {heroData.secondary_call_to_action}{" "}
-                  <span aria-hidden="true">→</span>
+                  {heroSecondaryCallToAction} <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
@@ -50,7 +58,7 @@ function App() {
       <footer className="bg-white dark:bg-gray-900 w-100">
         <div className="mx-auto w-full max-w-screen-xl">
           <div className="grid grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
-            {footerData.columns.map((c) => (
+            {footerNavigation.links.map((c) => (
               <div key={c.title}>
                 <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase">
                   {c.title}
@@ -71,16 +79,16 @@ function App() {
         <div className="px-4 py-6 bg-gray-100 dark:bg-gray-700 w-100">
           <div className="flex mt-4 space-x-5 sm:justify-center md:mt-0">
             <a
-              href={footerData.copyright.href}
+              href={footerNavigation.copyRights.href}
               className="text-gray-400 hover:text-gray-900 dark:hover:text-white"
             >
-              {footerData.copyright.title}
+              {footerNavigation.copyRights.title}
             </a>
           </div>
         </div>
       </footer>
     </main>
-  );
+  )
 }
 
-export default App;
+export default App
