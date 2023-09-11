@@ -14,6 +14,8 @@ export interface ISidebarData {
 export type ISidebarContext = {
   sidebarLinks: ISidebarData[]
   setSidebarLinks: React.Dispatch<React.SetStateAction<ISidebarData[]>>
+  playLists: string[]
+  setPlayLists: React.Dispatch<React.SetStateAction<string[]>>
 }
 
 export interface IAlbumCard {

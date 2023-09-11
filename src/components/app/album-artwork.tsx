@@ -1,5 +1,5 @@
-import { PlusCircledIcon } from "@radix-ui/react-icons"
-import { cn } from "@/lib/utils"
+import { PlusCircledIcon } from '@radix-ui/react-icons'
+import { cn } from '@/lib/utils'
 import {
   ContextMenu,
   ContextMenuContent,
@@ -9,27 +9,31 @@ import {
   ContextMenuSubContent,
   ContextMenuSubTrigger,
   ContextMenuTrigger,
-} from "@/components/ui/context-menu"
-import { listenNowAlbums } from "../../data/albums.json"
-import { playlists } from "../../data/playlists.json"
+} from '@/components/ui/context-menu'
+import { PlaylistIcon } from '@/components/app/icons'
+import { IAlbumCard, ISidebarContext } from '@/interfaces'
+import { useContext } from 'react'
+import { SidebarContext } from '@/contexts/SidebarContext'
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
-  album: typeof listenNowAlbums[number]
-  aspectRatio?: "portrait" | "square"
+  album: IAlbumCard
+  aspectRatio?: 'portrait' | 'square'
   width?: number
   height?: number
 }
 
 export function AlbumArtwork({
   album,
-  aspectRatio = "portrait",
+  aspectRatio = 'portrait',
   width,
   height,
   className,
   ...props
 }: AlbumArtworkProps) {
+  const { playLists } = useContext<ISidebarContext>(SidebarContext)
+
   return (
-    <div className={cn("space-y-3", className)} {...props}>
+    <div className={cn('space-y-3', className)} {...props}>
       <ContextMenu>
         <ContextMenuTrigger>
           <div className="overflow-hidden rounded-md">
@@ -39,8 +43,8 @@ export function AlbumArtwork({
               width={width}
               height={height}
               className={cn(
-                "h-auto w-auto object-cover transition-all hover:scale-105",
-                aspectRatio === "portrait" ? "aspect-[3/4]" : "aspect-square"
+                'h-auto w-auto object-cover transition-all hover:scale-105',
+                aspectRatio === 'portrait' ? 'aspect-[3/4]' : 'aspect-square',
               )}
             />
           </div>
@@ -55,21 +59,10 @@ export function AlbumArtwork({
                 New Playlist
               </ContextMenuItem>
               <ContextMenuSeparator />
-              {playlists.map((playlist) => (
-                <ContextMenuItem key={playlist}>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="mr-2 h-4 w-4"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M21 15V6M18.5 18a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5ZM12 12H3M16 6H3M12 18H3" />
-                  </svg>
-                  {playlist}
+              {playLists.map((item: string, index: number) => (
+                <ContextMenuItem key={`${item}${index}`}>
+                  <PlaylistIcon />
+                  {item}
                 </ContextMenuItem>
               ))}
             </ContextMenuSubContent>

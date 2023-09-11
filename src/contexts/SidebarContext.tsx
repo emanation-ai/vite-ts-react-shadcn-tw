@@ -70,75 +70,26 @@ const SidebarContextData: React.FC<Props> = ({ children }) => {
         },
       ],
     },
-    {
-      title: 'Playlists',
-      links: [
-        {
-          id: 9,
-          icon: <PlaylistIcon />,
-          title: 'Recently Added',
-        },
-        {
-          id: 10,
-          icon: <PlaylistIcon />,
-          title: 'Recently Played',
-        },
-        {
-          id: 11,
-          icon: <PlaylistIcon />,
-          title: 'Top Songs',
-        },
-        {
-          id: 12,
-          icon: <PlaylistIcon />,
-          title: 'Top Albums',
-        },
-        {
-          id: 13,
-          icon: <PlaylistIcon />,
-          title: 'Top Artists',
-        },
-        {
-          id: 14,
-          icon: <PlaylistIcon />,
-          title: 'Logic Discography',
-        },
-        {
-          id: 15,
-          icon: <PlaylistIcon />,
-          title: 'Bedtime Beats',
-        },
-        {
-          id: 16,
-          icon: <PlaylistIcon />,
-          title: 'Feeling Happy',
-        },
-        {
-          id: 17,
-          icon: <PlaylistIcon />,
-          title: 'I miss Y2K Pop',
-        },
-        {
-          id: 18,
-          icon: <PlaylistIcon />,
-          title: 'Runtober',
-        },
-        {
-          id: 19,
-          icon: <PlaylistIcon />,
-          title: 'Mellow Days',
-        },
-        {
-          id: 20,
-          icon: <PlaylistIcon />,
-          title: 'Eminem Essentials',
-        },
-      ],
-    },
+  ])
+  let [playLists, setPlayLists] = useState<string[]>([
+    'Recently Added',
+    'Recently Played',
+    'Top Songs',
+    'Top Albums',
+    'Top Artists',
+    'Logic Discography',
+    'Bedtime Beats',
+    'Feeling Happy',
+    'I miss Y2K Pop',
+    'Runtober',
+    'Mellow Days',
+    'Eminem Essentials',
   ])
 
   return (
-    <SidebarContext.Provider value={{ sidebarLinks, setSidebarLinks }}>
+    <SidebarContext.Provider
+      value={{ sidebarLinks, setSidebarLinks, playLists, setPlayLists }}
+    >
       {children}
     </SidebarContext.Provider>
   )
