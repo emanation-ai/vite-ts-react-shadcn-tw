@@ -1,24 +1,40 @@
-import { Button } from "@/components/ui/button";
+import { useContext } from 'react'
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { CalendarDateRangePicker } from "@/components/app/date-range-picker";
-import { MainNav } from "@/components/app/main-nav";
-import { Overview } from "@/components/app/overview";
-import { RecentSales } from "@/components/app/recent-sales";
-import { Search } from "@/components/app/search";
-import TeamSwitcher from "@/components/app/team-switcher";
-import { UserNav } from "@/components/app/user-nav";
-import { main, stats } from "./data/main_data.json";
-import { chart_header } from "./data/chart_data.json";
-import { sales_header } from "./data/recent_sales.json";
+} from '@/components/ui/card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { CalendarDateRangePicker } from '@/components/app/date-range-picker'
+import { MainNav } from '@/components/app/main-nav'
+import { Overview } from '@/components/app/overview'
+import { RecentSales } from '@/components/app/recent-sales'
+import { Search } from '@/components/app/search'
+import TeamSwitcher from '@/components/app/team-switcher'
+import { UserNav } from '@/components/app/user-nav'
+import {
+  IDashboardChartsContext,
+  IDashboardMainContext,
+  IDashboardRecentSalesContext,
+} from '@/interfaces'
+import { DashboardMainContext } from '@/contexts/DashboardMainContext'
+import { DashboardChartsContext } from '@/contexts/DashboardChartsContext'
+import { DashboardRecentSalesContext } from '@/contexts/DashboardRecentSalesContext'
 
 function App() {
+  const { main, stats } = useContext<IDashboardMainContext>(
+    DashboardMainContext,
+  )
+  const { chart_header } = useContext<IDashboardChartsContext>(
+    DashboardChartsContext,
+  )
+  const { sales_header } = useContext<IDashboardRecentSalesContext>(
+    DashboardRecentSalesContext,
+  )
+
   return (
     <>
       <div className="flex-col md:flex">
@@ -109,6 +125,6 @@ function App() {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default App;
+export default App

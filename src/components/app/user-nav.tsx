@@ -1,6 +1,8 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { user, menus, menus_other } from "../../data/user_nav.json";
-import { Button } from "@/components/ui/button";
+import { useContext } from 'react'
+import { IUserNavigationContext } from '@/interfaces'
+import { UserNavigationContext } from '@/contexts/UserNavigationContext'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -10,9 +12,13 @@ import {
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+} from '@/components/ui/dropdown-menu'
 
 export function UserNav() {
+  const { user, menus, menus_other } = useContext<IUserNavigationContext>(
+    UserNavigationContext,
+  )
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -54,5 +60,5 @@ export function UserNav() {
         ))}
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }

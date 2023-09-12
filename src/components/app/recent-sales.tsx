@@ -1,7 +1,13 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { recent_sales } from "../../data/recent_sales.json";
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { useContext } from 'react'
+import { IDashboardRecentSalesContext } from '@/interfaces'
+import { DashboardRecentSalesContext } from '@/contexts/DashboardRecentSalesContext'
 
 export function RecentSales() {
+  const { recent_sales } = useContext<IDashboardRecentSalesContext>(
+    DashboardRecentSalesContext,
+  )
+
   return (
     <div className="space-y-8">
       {recent_sales.map((sale, index) => (
@@ -18,5 +24,5 @@ export function RecentSales() {
         </div>
       ))}
     </div>
-  );
+  )
 }

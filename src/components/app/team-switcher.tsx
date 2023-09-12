@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
-import * as React from "react";
+import * as React from 'react'
 import {
   CaretSortIcon,
   CheckIcon,
   PlusCircledIcon,
-} from "@radix-ui/react-icons";
-import { cn } from "@/lib/utils";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Button } from "@/components/ui/button";
+} from '@radix-ui/react-icons'
+import { cn } from '@/lib/utils'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import {
   Command,
   CommandEmpty,
@@ -17,7 +17,7 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "@/components/ui/command";
+} from '@/components/ui/command'
 import {
   Dialog,
   DialogContent,
@@ -26,35 +26,34 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from '@/components/ui/popover'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { groups, create_team } from "../../data/user_teams.json";
+} from '@/components/ui/select'
+import { IUserTeamContext } from '@/interfaces'
+import { UserTeamContext } from '@/contexts/UserTeamContext'
 
-type Team = (typeof groups)[number]["teams"][number];
-type PopoverTriggerProps = React.ComponentPropsWithoutRef<
-  typeof PopoverTrigger
->;
+type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 interface TeamSwitcherProps extends PopoverTriggerProps {}
 
 export default function TeamSwitcher({ className }: TeamSwitcherProps) {
-  const [open, setOpen] = React.useState(false);
-  const [showNewTeamDialog, setShowNewTeamDialog] = React.useState(false);
-  const [selectedTeam, setSelectedTeam] = React.useState<Team>(
-    groups[0].teams[0]
-  );
+  const { groups, create_team } = React.useContext<IUserTeamContext>(
+    UserTeamContext,
+  )
+  const [open, setOpen] = React.useState(false)
+  const [showNewTeamDialog, setShowNewTeamDialog] = React.useState(false)
+  const [selectedTeam, setSelectedTeam] = React.useState(groups[0].teams[0])
   return (
     <Dialog open={showNewTeamDialog} onOpenChange={setShowNewTeamDialog}>
       <Popover open={open} onOpenChange={setOpen}>
@@ -64,7 +63,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
             role="combobox"
             aria-expanded={open}
             aria-label="Select"
-            className={cn("w-[200px] justify-between", className)}
+            className={cn('w-[200px] justify-between', className)}
           >
             <Avatar className="mr-2 h-5 w-5">
               <AvatarImage
@@ -88,8 +87,8 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                     <CommandItem
                       key={`${group.label}-${team.label}-${i}`}
                       onSelect={() => {
-                        setSelectedTeam(team);
-                        setOpen(false);
+                        setSelectedTeam(team)
+                        setOpen(false)
                       }}
                       className="text-sm"
                     >
@@ -104,10 +103,10 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                       {team.label}
                       <CheckIcon
                         className={cn(
-                          "ml-auto h-4 w-4",
+                          'ml-auto h-4 w-4',
                           selectedTeam.value === team.value
-                            ? "opacity-100"
-                            : "opacity-0"
+                            ? 'opacity-100'
+                            : 'opacity-0',
                         )}
                       />
                     </CommandItem>
@@ -121,8 +120,8 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                 <DialogTrigger asChild>
                   <CommandItem
                     onSelect={() => {
-                      setOpen(false);
-                      setShowNewTeamDialog(true);
+                      setOpen(false)
+                      setShowNewTeamDialog(true)
                     }}
                   >
                     <PlusCircledIcon className="mr-2 h-5 w-5" />
@@ -159,7 +158,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                 <SelectContent>
                   {create_team.subscription_plans.map((plan, i) => (
                     <SelectItem key={`${plan.value}-${i}`} value={plan.value}>
-                      <span className="font-medium">{plan.title}</span> -{" "}
+                      <span className="font-medium">{plan.title}</span> -{' '}
                       <span className="text-muted-foreground">
                         {plan.pricing_description}
                       </span>
@@ -178,5 +177,5 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
         </DialogFooter>
       </DialogContent>
     </Dialog>
-  );
+  )
 }

@@ -1,9 +1,15 @@
-"use client";
+'use client'
 
-import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from "recharts";
-import { chart_data } from "../../data/chart_data.json";
+import { DashboardChartsContext } from '@/contexts/DashboardChartsContext'
+import { IDashboardChartsContext } from '@/interfaces'
+import { useContext } from 'react'
+import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 
 export function Overview() {
+  const { chart_data } = useContext<IDashboardChartsContext>(
+    DashboardChartsContext,
+  )
+
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={chart_data}>
@@ -24,5 +30,5 @@ export function Overview() {
         <Bar dataKey="total" fill="#adfa1d" radius={[4, 4, 0, 0]} />
       </BarChart>
     </ResponsiveContainer>
-  );
+  )
 }

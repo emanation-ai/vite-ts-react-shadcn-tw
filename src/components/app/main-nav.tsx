@@ -1,15 +1,19 @@
-import { Link } from "react-router-dom";
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { INavigationContext } from '@/interfaces'
+import { NavigationContext } from '@/contexts/NavigationContext'
 
-import { cn } from "@/lib/utils";
-import { links } from "../../data/nav_menu.json";
+import { cn } from '@/lib/utils'
 
 export function MainNav({
   className,
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
+  const { links } = useContext<INavigationContext>(NavigationContext)
+
   return (
     <nav
-      className={cn("flex items-center space-x-4 lg:space-x-6", className)}
+      className={cn('flex items-center space-x-4 lg:space-x-6', className)}
       {...props}
     >
       {links.map((link, i: number) => (
@@ -22,5 +26,5 @@ export function MainNav({
         </Link>
       ))}
     </nav>
-  );
+  )
 }
