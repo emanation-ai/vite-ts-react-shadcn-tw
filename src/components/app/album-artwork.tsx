@@ -36,7 +36,7 @@ export function AlbumArtwork({
     <div className={cn('space-y-3', className)} {...props}>
       <ContextMenu>
         <ContextMenuTrigger>
-          <div className="overflow-hidden rounded-md">
+          <div className="overflow-hidden rounded-md shadow-custom-card-shadow">
             <img
               src={album.cover}
               alt={album.name}

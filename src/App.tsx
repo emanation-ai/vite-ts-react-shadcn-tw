@@ -79,10 +79,10 @@ function App() {
                     >
                       <div className="flex items-center justify-between">
                         <div className="space-y-1">
-                          <h2 className="text-2xl font-semibold tracking-tight">
+                          <h2 className="text-size-base font-semibold tracking-tight text-primary font-poppins">
                             Listen Now
                           </h2>
-                          <p className="text-sm text-muted-foreground">
+                          <p className="text-sm text-success font-roboto">
                             Top picks for you. Updated daily.
                           </p>
                         </div>
