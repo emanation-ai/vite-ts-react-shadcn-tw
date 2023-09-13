@@ -50,7 +50,9 @@ function App() {
         </div>
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
-            <h2 className="text-3xl font-bold tracking-tight">{main.title}</h2>
+            <h2 className="text-size-base font-bold tracking-tight text-primary font-poppins">
+              {main.title}
+            </h2>
             <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
               <Button>Download</Button>
@@ -71,7 +73,7 @@ function App() {
             <TabsContent value="overview" className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
                 {stats.map((stat, i) => (
-                  <Card key={`stat-${i}`}>
+                  <Card key={`stat-${i}`} className="shadow-custom-card-shadow">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
                         {stat.title}
@@ -90,12 +92,10 @@ function App() {
                       </svg>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-2xl font-bold">
+                      <div className="text-2xl font-bold text-success font-roboto">
                         {stat.formatted_value}
                       </div>
-                      <p className="text-xs text-muted-foreground">
-                        {stat.label}
-                      </p>
+                      <p className="text-xs text-danger">{stat.label}</p>
                     </CardContent>
                   </Card>
                 ))}
