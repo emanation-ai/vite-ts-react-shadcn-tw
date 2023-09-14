@@ -1,6 +1,6 @@
 import { IChartData, ICardHeader, IDashboardChartsContext } from "@/interfaces"
-import { chartData, chartHeader } from "./chartsDefault.json"
 import React, { createContext, useState } from "react"
+import charts_default from "../data/chart_data.json"
 
 // @ts-ignore
 export const DashboardChartsContext = createContext<IDashboardChartsContext>()
@@ -10,8 +10,12 @@ type Props = {
 }
 
 const DashboardChartsData: React.FC<Props> = ({ children }) => {
-  let [chart_header, setChartHeaders] = useState<ICardHeader>(chartHeader)
-  let [chart_data, setChartData] = useState<IChartData[]>(chartData)
+  let [chart_header, setChartHeaders] = useState<ICardHeader>(
+    charts_default.chart_header
+  )
+  let [chart_data, setChartData] = useState<IChartData[]>(
+    charts_default.chart_data
+  )
 
   return (
     <DashboardChartsContext.Provider
