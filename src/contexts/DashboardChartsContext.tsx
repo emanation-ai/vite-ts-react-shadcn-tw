@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react'
-import { IChardData, ICardHeader, IDashboardChartsContext } from '@/interfaces'
+import { IChartData, ICardHeader, IDashboardChartsContext } from "@/interfaces"
+import { chartData, chartHeader } from "./chartsDefault.json"
+import React, { createContext, useState } from "react"
 
 // @ts-ignore
 export const DashboardChartsContext = createContext<IDashboardChartsContext>()
@@ -9,60 +10,8 @@ type Props = {
 }
 
 const DashboardChartsData: React.FC<Props> = ({ children }) => {
-  let [chart_header, setChartHeaders] = useState<ICardHeader>({
-    title: 'Overview',
-    subtitle: 'Sales per month',
-  })
-  let [chart_data, setChartData] = useState<IChardData[]>([
-    {
-      name: 'Jan',
-      total: 5000,
-    },
-    {
-      name: 'Feb',
-      total: 3400,
-    },
-    {
-      name: 'Mar',
-      total: 4100,
-    },
-    {
-      name: 'Apr',
-      total: 3800,
-    },
-    {
-      name: 'May',
-      total: 2900,
-    },
-    {
-      name: 'Jun',
-      total: 3000,
-    },
-    {
-      name: 'Jul',
-      total: 2700,
-    },
-    {
-      name: 'Aug',
-      total: 3800,
-    },
-    {
-      name: 'Sep',
-      total: 3700,
-    },
-    {
-      name: 'Oct',
-      total: 2800,
-    },
-    {
-      name: 'Nov',
-      total: 2700,
-    },
-    {
-      name: 'Dec',
-      total: 3900,
-    },
-  ])
+  let [chart_header, setChartHeaders] = useState<ICardHeader>(chartHeader)
+  let [chart_data, setChartData] = useState<IChartData[]>(chartData)
 
   return (
     <DashboardChartsContext.Provider
