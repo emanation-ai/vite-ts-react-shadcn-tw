@@ -92,10 +92,10 @@ function App() {
                       </svg>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-2xl font-bold text-success font-roboto">
+                      <div className="text-2xl font-bold font-roboto">
                         {stat.formatted_value}
                       </div>
-                      <p className="text-xs text-danger">{stat.label}</p>
+                      <p className="text-xs text-success">{stat.label}</p>
                     </CardContent>
                   </Card>
                 ))}
