@@ -86,9 +86,9 @@ export type IDashboardMainContext = {
 }
 
 export type IDashboardChartsContext = {
-  chart_header: ICardHeader
+  chartHeader: ICardHeader
   setChartHeaders: React.Dispatch<React.SetStateAction<ICardHeader>>
-  chart_data: IChardData[]
+  chartData: IChardData[]
   setChartData: React.Dispatch<React.SetStateAction<IChardData[]>>
 }
 

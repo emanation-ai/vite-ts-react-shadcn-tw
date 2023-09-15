@@ -6,13 +6,13 @@ import { useContext } from 'react'
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 
 export function Overview() {
-  const { chart_data } = useContext<IDashboardChartsContext>(
+  const { chartData } = useContext<IDashboardChartsContext>(
     DashboardChartsContext,
   )
 
   return (
     <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={chart_data}>
+      <BarChart data={chartData}>
         <XAxis
           dataKey="name"
           stroke="#888888"

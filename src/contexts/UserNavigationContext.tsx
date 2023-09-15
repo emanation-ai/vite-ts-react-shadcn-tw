@@ -1,5 +1,6 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import { IUser, IUserMenu, IUserNavigationContext } from '@/interfaces'
+import data from '@/data/user_nav.json'
 
 // @ts-ignore
 export const UserNavigationContext = createContext<IUserNavigationContext>()
@@ -9,40 +10,15 @@ type Props = {
 }
 
 const UserNavigationData: React.FC<Props> = ({ children }) => {
-  let [user, setUser] = useState<IUser>({
-    img_src: '/avatars/01.png',
-    img_alt: '@shadcn',
-    username: 'shadcn',
-    email: 'm@example.com',
-  })
-  let [menus, setMenus] = useState<IUserMenu[]>([
-    {
-      name: 'Profile',
-      shortcut: '⇧⌘P',
-    },
-    {
-      name: 'Billing',
-      shortcut: '⌘B',
-    },
-    {
-      name: 'Settings',
-      shortcut: '⌘S',
-    },
-    {
-      name: 'New Team',
-      shortcut: null,
-    },
-  ])
-  let [menus_other, setOtherMenus] = useState<IUserMenu[]>([
-    {
-      name: 'Log out',
-      shortcut: '⇧⌘Q',
-    },
-    {
-      name: 'Exit',
-      shortcut: null,
-    },
-  ])
+  let [user, setUser] = useState<IUser>(data.user)
+  let [menus, setMenus] = useState<IUserMenu[]>(data.menus)
+  let [menus_other, setOtherMenus] = useState<IUserMenu[]>(data.menus_other)
+
+  useEffect(() => {
+    setUser((user = data.user))
+    setMenus((menus = data.menus))
+    setOtherMenus((menus_other = data.menus_other))
+  }, [data.user, data.menus, data.menus_other])
 
   return (
     <UserNavigationContext.Provider

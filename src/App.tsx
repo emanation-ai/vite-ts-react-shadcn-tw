@@ -28,7 +28,7 @@ function App() {
   const { main, stats } = useContext<IDashboardMainContext>(
     DashboardMainContext,
   )
-  const { chart_header } = useContext<IDashboardChartsContext>(
+  const { chartHeader } = useContext<IDashboardChartsContext>(
     DashboardChartsContext,
   )
   const { sales_header } = useContext<IDashboardRecentSalesContext>(
@@ -103,8 +103,8 @@ function App() {
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <Card className="col-span-4">
                   <CardHeader>
-                    <CardTitle>{chart_header.title}</CardTitle>
-                    <CardDescription>{chart_header.subtitle}</CardDescription>
+                    <CardTitle>{chartHeader.title}</CardTitle>
+                    <CardDescription>{chartHeader.subtitle}</CardDescription>
                   </CardHeader>
                   <CardContent className="pl-2">
                     <Overview />

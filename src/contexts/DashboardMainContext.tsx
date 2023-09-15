@@ -1,9 +1,10 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useEffect, useState } from 'react'
 import {
   IDashboardMainContext,
   IDashboardStats,
   IDashboardTabs,
 } from '@/interfaces'
+import data from '@/data/main_data.json'
 
 // @ts-ignore
 export const DashboardMainContext = createContext<IDashboardMainContext>()
@@ -13,53 +14,13 @@ type Props = {
 }
 
 const DashboardMainData: React.FC<Props> = ({ children }) => {
-  let [main, setMain] = useState<IDashboardTabs>({
-    title: 'Dashboard',
-    tabs: [
-      {
-        title: 'Overview',
-        value: 'overview',
-        disabled: false,
-      },
-      {
-        title: 'Analytics',
-        value: 'analytics',
-        disabled: true,
-      },
-      {
-        title: 'Reports',
-        value: 'reports',
-        disabled: true,
-      },
-      {
-        title: 'Notifications',
-        value: 'notifications',
-        disabled: true,
-      },
-    ],
-  })
-  let [stats, setStats] = useState<IDashboardStats[]>([
-    {
-      title: 'Total Revenue',
-      formatted_value: '$45,231.89',
-      label: '+20.1% from last month',
-    },
-    {
-      title: 'Subscriptions',
-      formatted_value: '+2350',
-      label: '+180.1% from last month',
-    },
-    {
-      title: 'Total Revenue',
-      formatted_value: '+12,234',
-      label: '+19% from last month',
-    },
-    {
-      title: 'Total Revenue',
-      formatted_value: '+573',
-      label: '+201 since last hour',
-    },
-  ])
+  let [main, setMain] = useState<IDashboardTabs>(data.main)
+  let [stats, setStats] = useState<IDashboardStats[]>(data.stats)
+
+  useEffect(() => {
+    setMain((main = data.main))
+    setStats((stats = data.stats))
+  }, [data.main, data.stats])
 
   return (
     <DashboardMainContext.Provider value={{ main, stats, setMain, setStats }}>

@@ -1,0 +1,49 @@
+{
+    "groups": [
+        {
+            "label": "Personal Account",
+            "teams": [
+                {
+                    "label": "Alicia Koch",
+                    "value": "personal",
+                    "avatar_src": "https://avatar.vercel.sh/personal.png"
+                }
+            ]
+        },
+        {
+            "label": "Teams",
+            "teams": [
+                {
+                    "label": "Acme Inc.",
+                    "value": "acme-inc",
+                    "avatar_src": "https://avatar.vercel.sh/acme-inc.png"
+                },
+                {
+                    "label": "Monsters Inc.",
+                    "value": "monsters",
+                    "avatar_src": "https://avatar.vercel.sh/monsters.png"
+                }
+            ]
+        }
+    ],
+    "create_team": {
+        "title": "Create team",
+        "description": "Add a new team to manage products and customers.",
+        "input_label_name": "Team Name",
+        "input_placeholder_name": "Acme Inc.",
+        "input_label_sub_plan": "Subscription Plan",
+        "input_placeholder_sub_plan": "Select a plan",
+        "subscription_plans": [
+            {
+                "title": "Free",
+                "pricing_description": "Trial for two weeks",
+                "value": "free"
+            },
+            {
+                "title": "Pro",
+                "pricing_description": "$9/month per user",
+                "value": "pro"
+            }
+        ]
+    }
+}
