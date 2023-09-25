@@ -41,19 +41,18 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { IUserTeamContext } from '@/interfaces'
-import { UserTeamContext } from '@/contexts/UserTeamContext'
+import { AppContext, IGlobalDataType } from '@/contexts/AppContextData'
 
 type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 interface TeamSwitcherProps extends PopoverTriggerProps {}
 
 export default function TeamSwitcher({ className }: TeamSwitcherProps) {
-  const { groups, create_team } = React.useContext<IUserTeamContext>(
-    UserTeamContext,
-  )
+  const appData = React.useContext<IGlobalDataType>(AppContext)
   const [open, setOpen] = React.useState(false)
   const [showNewTeamDialog, setShowNewTeamDialog] = React.useState(false)
-  const [selectedTeam, setSelectedTeam] = React.useState(groups[0].teams[0])
+  const [selectedTeam, setSelectedTeam] = React.useState(
+    appData.groups[0].teams[0],
+  )
   return (
     <Dialog open={showNewTeamDialog} onOpenChange={setShowNewTeamDialog}>
       <Popover open={open} onOpenChange={setOpen}>
@@ -81,7 +80,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
             <CommandList>
               <CommandInput placeholder="Search team..." />
               <CommandEmpty>No team found.</CommandEmpty>
-              {groups.map((group, i) => (
+              {appData.groups.map((group, i) => (
                 <CommandGroup key={`${group.label}-${i}`} heading={group.label}>
                   {group.teams.map((team, i: number) => (
                     <CommandItem
@@ -125,7 +124,7 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                     }}
                   >
                     <PlusCircledIcon className="mr-2 h-5 w-5" />
-                    {create_team.title}
+                    {appData.create_team.title}
                   </CommandItem>
                 </DialogTrigger>
               </CommandGroup>
@@ -135,28 +134,34 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
       </Popover>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>{create_team.title}</DialogTitle>
-          <DialogDescription>{create_team.description}</DialogDescription>
+          <DialogTitle>{appData.create_team.title}</DialogTitle>
+          <DialogDescription>
+            {appData.create_team.description}
+          </DialogDescription>
         </DialogHeader>
         <div>
           <div className="space-y-4 py-2 pb-4">
             <div className="space-y-2">
-              <Label htmlFor="name">{create_team.input_label_name}</Label>
+              <Label htmlFor="name">
+                {appData.create_team.input_label_name}
+              </Label>
               <Input
                 id="name"
-                placeholder={create_team.input_placeholder_name}
+                placeholder={appData.create_team.input_placeholder_name}
               />
             </div>
             <div className="space-y-2">
-              <Label htmlFor="plan">{create_team.input_label_sub_plan}</Label>
+              <Label htmlFor="plan">
+                {appData.create_team.input_label_sub_plan}
+              </Label>
               <Select>
                 <SelectTrigger>
                   <SelectValue
-                    placeholder={create_team.input_placeholder_sub_plan}
+                    placeholder={appData.create_team.input_placeholder_sub_plan}
                   />
                 </SelectTrigger>
                 <SelectContent>
-                  {create_team.subscription_plans.map((plan, i) => (
+                  {appData.create_team.subscription_plans.map((plan, i) => (
                     <SelectItem key={`${plan.value}-${i}`} value={plan.value}>
                       <span className="font-medium">{plan.title}</span> -{' '}
                       <span className="text-muted-foreground">

@@ -1,0 +1,240 @@
+{
+    "chart_header": {
+        "title": "hello",
+        "subtitle": "Sales per month"
+    },
+    "chart_data": [
+        {
+            "name": "Jan",
+            "total": 5000
+        },
+        {
+            "name": "Feb",
+            "total": 3400
+        },
+        {
+            "name": "Mar",
+            "total": 4100
+        },
+        {
+            "name": "Apr",
+            "total": 3800
+        },
+        {
+            "name": "May",
+            "total": 2900
+        },
+        {
+            "name": "Jun",
+            "total": 3000
+        },
+        {
+            "name": "Jul",
+            "total": 2700
+        },
+        {
+            "name": "Aug",
+            "total": 3800
+        },
+        {
+            "name": "Sep",
+            "total": 3700
+        },
+        {
+            "name": "Oct",
+            "total": 2800
+        },
+        {
+            "name": "Nov",
+            "total": 2700
+        },
+        {
+            "name": "Dec",
+            "total": 3900
+        }
+    ],
+    "main": {
+        "title": "Dashboard",
+        "tabs": [
+            {
+                "title": "Overview",
+                "value": "overview",
+                "disabled": false
+            },
+            {
+                "title": "Analytics",
+                "value": "analytics",
+                "disabled": true
+            },
+            {
+                "title": "Reports",
+                "value": "reports",
+                "disabled": true
+            },
+            {
+                "title": "Notifications",
+                "value": "notifications",
+                "disabled": true
+            }
+        ]
+    },
+    "stats": [
+        {
+            "title": "Total Revenue",
+            "formatted_value": "$45,231.89",
+            "label": "+20.1% from last month"
+        },
+        {
+            "title": "Subscriptions",
+            "formatted_value": "+2350",
+            "label": "+180.1% from last month"
+        },
+        {
+            "title": "Total Revenue",
+            "formatted_value": "+12,234",
+            "label": "+19% from last month"
+        },
+        {
+            "title": "Total Revenue",
+            "formatted_value": "+573",
+            "label": "+201 since last hour"
+        }
+    ],
+    "links": [
+        {
+            "href": "/examples/dashboard",
+            "label": "Overview"
+        },
+        {
+            "href": "/examples/dashboard",
+            "label": "Customer"
+        },
+        {
+            "href": "/examples/dashboard",
+            "label": "Products"
+        },
+        {
+            "href": "/examples/dashboard",
+            "label": "Settings"
+        }
+    ],
+    "sales_header": {
+        "title": "Recent Sales",
+        "subtitle": "You made 200 sales this month"
+    },
+    "recent_sales": [
+        {
+            "name": "Olivia Martin",
+            "email": "olivia.martin@email.com",
+            "amount": "+$1,999.00",
+            "avatar_src": "/avatars/01.png",
+            "avatar_alt": "Olivia Martin Avatar",
+            "avatar_fallback": "OM"
+        },
+        {
+            "name": "Jackson Lee",
+            "email": "jackson.lee@email.com",
+            "amount": "+$39.00",
+            "avatar_src": "/avatars/02.png",
+            "avatar_alt": "Jackson Lee Avatar",
+            "avatar_fallback": "JL"
+        },
+        {
+            "name": "Isabella Nguyen",
+            "email": "isabella.nguyen@email.com",
+            "amount": "+$299.00",
+            "avatar_src": "/avatars/03.png",
+            "avatar_alt": "Isabella Nguyen Avatar",
+            "avatar_fallback": "IN"
+        },
+        {
+            "name": "William Kim",
+            "email": "will@email.com",
+            "amount": "+$99.00",
+            "avatar_src": "/avatars/04.png",
+            "avatar_alt": "William Kim Avatar",
+            "avatar_fallback": "WK"
+        }
+    ],
+    "user": {
+        "img_src": "/avatars/01.png",
+        "img_alt": "@shadcn",
+        "username": "shadcn",
+        "email": "m@example.com"
+    },
+    "menus": [
+        {
+            "name": "Profile",
+            "shortcut": "⇧⌘P"
+        },
+        {
+            "name": "Billing",
+            "shortcut": "⌘B"
+        },
+        {
+            "name": "Settings",
+            "shortcut": "⌘S"
+        },
+        {
+            "name": "New Team",
+            "shortcut": null
+        }
+    ],
+    "menus_other": [
+        {
+            "name": "Log out",
+            "shortcut": "⇧⌘Q"
+        },
+        {
+            "name": "Exit",
+            "shortcut": null
+        }
+    ],
+    "groups": [
+        {
+            "label": "Personal Account",
+            "teams": [
+                {
+                    "label": "Alicia Koch",
+                    "value": "personal",
+                    "avatar_src": "https://avatar.vercel.sh/personal.png"
+                }
+            ]
+        },
+        {
+            "label": "Teams",
+            "teams": [
+                {
+                    "label": "Acme Inc.",
+                    "value": "acme-inc",
+                    "avatar_src": "https://avatar.vercel.sh/acme-inc.png"
+                },
+                {
+                    "label": "Monsters Inc.",
+                    "value": "monsters",
+                    "avatar_src": "https://avatar.vercel.sh/monsters.png"
+                }
+            ]
+        }
+    ],
+    "create_team": {
+        "title": "Create team",
+        "description": "Add a new team to manage products and customers.",
+        "input_label_name": "Team Name",
+        "input_placeholder_name": "Acme Inc.",
+        "input_label_sub_plan": "Subscription Plan",
+        "input_placeholder_sub_plan": "Select a plan",
+        "subscription_plans": [
+            {
+                "title": "Free",
+                "pricing_description": "Trial for two weeks",
+                "value": "free"
+            },
+            {
+                "title": "Pro",
+                "pricing_description": "$9/month per user",
+                "value": "pro"
+            }
+        ]
+    }
+}

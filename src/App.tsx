@@ -15,25 +15,10 @@ import { RecentSales } from '@/components/app/recent-sales'
 import { Search } from '@/components/app/search'
 import TeamSwitcher from '@/components/app/team-switcher'
 import { UserNav } from '@/components/app/user-nav'
-import {
-  IDashboardChartsContext,
-  IDashboardMainContext,
-  IDashboardRecentSalesContext,
-} from '@/interfaces'
-import { DashboardMainContext } from '@/contexts/DashboardMainContext'
-import { DashboardChartsContext } from '@/contexts/DashboardChartsContext'
-import { DashboardRecentSalesContext } from '@/contexts/DashboardRecentSalesContext'
+import { AppContext, IGlobalDataType } from './contexts/AppContextData'
 
 function App() {
-  const { main, stats } = useContext<IDashboardMainContext>(
-    DashboardMainContext,
-  )
-  const { chartHeader } = useContext<IDashboardChartsContext>(
-    DashboardChartsContext,
-  )
-  const { sales_header } = useContext<IDashboardRecentSalesContext>(
-    DashboardRecentSalesContext,
-  )
+  const appData = useContext<IGlobalDataType>(AppContext)
 
   return (
     <>
@@ -51,7 +36,7 @@ function App() {
         <div className="flex-1 space-y-4 p-8 pt-6">
           <div className="flex items-center justify-between space-y-2">
             <h2 className="text-size-base font-bold tracking-tight text-primary font-poppins">
-              {main.title}
+              {appData.main.title}
             </h2>
             <div className="flex items-center space-x-2">
               <CalendarDateRangePicker />
@@ -60,7 +45,7 @@ function App() {
           </div>
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsList>
-              {main.tabs.map((tab) => (
+              {appData.main.tabs.map((tab) => (
                 <TabsTrigger
                   value={tab.value}
                   key={tab.value}
@@ -72,7 +57,7 @@ function App() {
             </TabsList>
             <TabsContent value="overview" className="space-y-4">
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                {stats.map((stat, i) => (
+                {appData.stats.map((stat, i) => (
                   <Card key={`stat-${i}`} className="shadow-custom-card-shadow">
                     <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                       <CardTitle className="text-sm font-medium">
@@ -103,8 +88,10 @@ function App() {
               <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
                 <Card className="col-span-4">
                   <CardHeader>
-                    <CardTitle>{chartHeader.title}</CardTitle>
-                    <CardDescription>{chartHeader.subtitle}</CardDescription>
+                    <CardTitle>{appData.chart_header.title}</CardTitle>
+                    <CardDescription>
+                      {appData.chart_header.subtitle}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="pl-2">
                     <Overview />
@@ -112,8 +99,10 @@ function App() {
                 </Card>
                 <Card className="col-span-3">
                   <CardHeader>
-                    <CardTitle>{sales_header.title}</CardTitle>
-                    <CardDescription>{sales_header.subtitle}</CardDescription>
+                    <CardTitle>{appData.sales_header.title}</CardTitle>
+                    <CardDescription>
+                      {appData.sales_header.subtitle}
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <RecentSales />

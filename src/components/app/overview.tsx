@@ -1,18 +1,15 @@
 'use client'
 
-import { DashboardChartsContext } from '@/contexts/DashboardChartsContext'
-import { IDashboardChartsContext } from '@/interfaces'
+import { AppContext, IGlobalDataType } from '@/contexts/AppContextData'
 import { useContext } from 'react'
 import { Bar, BarChart, ResponsiveContainer, XAxis, YAxis } from 'recharts'
 
 export function Overview() {
-  const { chartData } = useContext<IDashboardChartsContext>(
-    DashboardChartsContext,
-  )
+  const appData = useContext<IGlobalDataType>(AppContext)
 
   return (
     <ResponsiveContainer width="100%" height={350}>
-      <BarChart data={chartData}>
+      <BarChart data={appData.chart_data}>
         <XAxis
           dataKey="name"
           stroke="#888888"
