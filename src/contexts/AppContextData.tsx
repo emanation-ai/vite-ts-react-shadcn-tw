@@ -4,7 +4,6 @@ import * as data from '@/data/index.json'
 export type IGlobalDataType = typeof data
 
 // @ts-ignore
-// export const AppContext = createContext<IGlobalDataType>()
 export const AppContext = createContext<IGlobalDataType>(data)
 
 type Props = {
