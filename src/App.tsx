@@ -8,41 +8,13 @@ import { AlbumArtwork } from './components/app/album-artwork'
 import { Menu } from './components/app/menu'
 import { PodcastEmptyPlaceholder } from './components/app/podcast-empty-placeholder'
 import { Sidebar } from './components/app/sidebar'
-import {
-  IAlbumCard,
-  IListenNowAlbumsContext,
-  IMadeForYouAlbumsContext,
-} from '@/interfaces'
-import { ListenNowContext } from '@/contexts/ListenNowAlbumsContext'
-import { MadeForYouAlbumContext } from '@/contexts/MadeForYouAlbumsContext'
+import { AppContext, IGlobalDataType } from '@/contexts/AppContext'
 
 function App() {
-  let { topAlbums, setTopAlbums } = useContext<IListenNowAlbumsContext>(
-    ListenNowContext,
-  )
-  let { madeForYouAlbums, setMadeForYouAlbums } = useContext<
-    IMadeForYouAlbumsContext
-  >(MadeForYouAlbumContext)
-  let addTopAlbum: IAlbumCard = {
-    name: 'React Rendezvous',
-    artist: 'Ethan Byte',
-    cover:
-      'https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=300&dpr=2&q=80',
-  }
-  let addMadeForYouAlbum: IAlbumCard = {
-    name: 'Thinking Components',
-    artist: 'Lena Logic',
-    cover:
-      'https://images.unsplash.com/photo-1615247001958-f4bc92fa6a4a?w=300&dpr=2&q=80',
-  }
+  const appData = useContext<IGlobalDataType>(AppContext)
 
   const handleAddMusic = () => {
-    let updatedTopAlbums: IAlbumCard[] = [...topAlbums]
-    let updatedMadeForYouAlbums: IAlbumCard[] = [...madeForYouAlbums]
-    updatedTopAlbums.push(addTopAlbum)
-    updatedMadeForYouAlbums.push(addMadeForYouAlbum)
-    setTopAlbums((topAlbums = updatedTopAlbums))
-    setMadeForYouAlbums((madeForYouAlbums = updatedMadeForYouAlbums))
+    console.log('Add Music!')
   }
 
   return (
@@ -91,7 +63,7 @@ function App() {
                       <div className="relative">
                         <ScrollArea>
                           <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 pb-4">
-                            {topAlbums.map((album, index: number) => (
+                            {appData.top_albums.map((album, index: number) => (
                               <AlbumArtwork
                                 key={`${album.name}${index}`}
                                 album={album}
@@ -117,16 +89,18 @@ function App() {
                       <div className="relative">
                         <ScrollArea>
                           <div className="grid lg:grid-cols-6 md:grid-cols-2 grid-cols-1 gap-4 pb-4">
-                            {madeForYouAlbums.map((album, index: number) => (
-                              <AlbumArtwork
-                                key={`${album.name}${index}`}
-                                album={album}
-                                className="w-[150px]"
-                                aspectRatio="square"
-                                width={150}
-                                height={150}
-                              />
-                            ))}
+                            {appData.made_for_you_albums.map(
+                              (album, index: number) => (
+                                <AlbumArtwork
+                                  key={`${album.name}${index}`}
+                                  album={album}
+                                  className="w-[150px]"
+                                  aspectRatio="square"
+                                  width={150}
+                                  height={150}
+                                />
+                              ),
+                            )}
                           </div>
                           <ScrollBar orientation="horizontal" />
                         </ScrollArea>

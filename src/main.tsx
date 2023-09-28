@@ -4,7 +4,7 @@ import App from './App.tsx'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import NotFound from './404.tsx'
-import GlobalContextProvider from '@/contexts/GlobalContext.tsx'
+import AppData from '@/contexts/AppContext.tsx'
 
 const router = createBrowserRouter([
   {
@@ -19,8 +19,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <GlobalContextProvider>
+    <AppData>
       <RouterProvider router={router} />
-    </GlobalContextProvider>
+    </AppData>
   </React.StrictMode>,
 )

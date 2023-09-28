@@ -1,24 +1,55 @@
+import React, { useContext } from 'react'
 import { cn } from '@/lib/utils'
 import { Button } from '@/components/ui/button'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import React, { useContext } from 'react'
-import { ISidebarContext } from '@/interfaces'
-import { SidebarContext } from '@/contexts/SidebarContext'
-import { PlaylistIcon } from '@/components/app/icons'
+import { AppContext, IGlobalDataType } from '@/contexts/AppContext'
+import {
+  AlbumIcon,
+  GridBoxIcon,
+  PencilIcon,
+  PlayIcon,
+  PlaylistIcon,
+  RadioWavesIcon,
+  SongIcon,
+  UserIcon,
+} from '@/components/app/icons'
 
 type Props = {
   className?: any
 }
 
 export const Sidebar: React.FC<Props> = ({ className }) => {
-  const { sidebarLinks, playLists } = useContext<ISidebarContext>(
-    SidebarContext,
-  )
+  const appData = useContext<IGlobalDataType>(AppContext)
+
+  const renderSidebarIcons: (icon: string) => React.ReactNode = (
+    icon: string,
+  ) => {
+    switch (icon) {
+      case 'play':
+        return <PlayIcon />
+      case 'grid':
+        return <GridBoxIcon />
+      case 'radio':
+        return <RadioWavesIcon />
+      case 'playlist':
+        return <PlaylistIcon />
+      case 'songs':
+        return <SongIcon />
+      case 'user':
+        return <UserIcon />
+      case 'pencil':
+        return <PencilIcon />
+      case 'album':
+        return <AlbumIcon />
+      default:
+        return <PlayIcon />
+    }
+  }
 
   return (
     <div className={cn('pb-12', className)}>
       <div className="space-y-4 py-4">
-        {sidebarLinks.map((block, index: number) => {
+        {appData.sidebar_links.map((block, index: number) => {
           return (
             <React.Fragment key={index}>
               <div className="px-3 py-2">
@@ -32,7 +63,7 @@ export const Sidebar: React.FC<Props> = ({ className }) => {
                       variant="ghost"
                       className="w-full justify-start font-normal"
                     >
-                      <span>{link.icon}</span>
+                      <span>{renderSidebarIcons(link.icon)}</span>
                       {link.title}
                     </Button>
                   ))}
@@ -49,7 +80,7 @@ export const Sidebar: React.FC<Props> = ({ className }) => {
           </h2>
           <ScrollArea className="h-[300px] px-1">
             <div className="space-y-1 p-2">
-              {playLists.map((link: string, index: number) => (
+              {appData.playlist.map((link: string, index: number) => (
                 <Button
                   key={`${link}-${index}`}
                   variant="ghost"

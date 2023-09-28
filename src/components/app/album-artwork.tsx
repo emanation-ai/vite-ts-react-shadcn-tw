@@ -1,3 +1,4 @@
+import { useContext } from 'react'
 import { PlusCircledIcon } from '@radix-ui/react-icons'
 import { cn } from '@/lib/utils'
 import {
@@ -11,9 +12,8 @@ import {
   ContextMenuTrigger,
 } from '@/components/ui/context-menu'
 import { PlaylistIcon } from '@/components/app/icons'
-import { IAlbumCard, ISidebarContext } from '@/interfaces'
-import { useContext } from 'react'
-import { SidebarContext } from '@/contexts/SidebarContext'
+import { IAlbumCard } from '@/interfaces'
+import { AppContext, IGlobalDataType } from '@/contexts/AppContext'
 
 interface AlbumArtworkProps extends React.HTMLAttributes<HTMLDivElement> {
   album: IAlbumCard
@@ -30,8 +30,7 @@ export function AlbumArtwork({
   className,
   ...props
 }: AlbumArtworkProps) {
-  const { playLists } = useContext<ISidebarContext>(SidebarContext)
-
+  const appData = useContext<IGlobalDataType>(AppContext)
   return (
     <div className={cn('space-y-3', className)} {...props}>
       <ContextMenu>
@@ -59,7 +58,7 @@ export function AlbumArtwork({
                 New Playlist
               </ContextMenuItem>
               <ContextMenuSeparator />
-              {playLists.map((item: string, index: number) => (
+              {appData.playlist.map((item: string, index: number) => (
                 <ContextMenuItem key={`${item}${index}`}>
                   <PlaylistIcon />
                   {item}
