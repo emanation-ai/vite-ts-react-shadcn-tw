@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import NotFound from './404.tsx';
+import React from 'react'
+import ReactDOM from 'react-dom/client'
+import App from './App.tsx'
+import './index.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import NotFound from './404.tsx'
+import AppData from '@/context/AppContext.tsx'
 
 const router = createBrowserRouter([
   {
@@ -12,12 +13,14 @@ const router = createBrowserRouter([
   },
   {
     path: '/*',
-    element: <NotFound/>
-  }
-]);
+    element: <NotFound />,
+  },
+])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+    <AppData>
+      <RouterProvider router={router} />
+    </AppData>
+  </React.StrictMode>,
+)

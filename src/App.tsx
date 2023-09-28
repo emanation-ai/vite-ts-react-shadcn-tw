@@ -1,22 +1,23 @@
-import { Link } from "react-router-dom";
-
-import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
-import { UserAuthForm } from "@/components/app/user-auth-form";
-import { branding, login, signup } from "./data/main_data.json";
+import { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { cn } from '@/lib/utils'
+import { buttonVariants } from '@/components/ui/button'
+import { UserAuthForm } from '@/components/app/user-auth-form'
+import { AppContext, IGlobalDataType } from '@/context/AppContext'
 
 function App() {
+  const appData = useContext<IGlobalDataType>(AppContext)
   return (
     <>
       <div className="container relative h-screen flex-col items-center justify-center pt-48 md:pt-0 md:grid lg:max-w-none lg:grid-cols-2 lg:px-0">
         <Link
-          to={login.login_button_link}
+          to={appData.login.login_button_link}
           className={cn(
-            buttonVariants({ variant: "ghost" }),
-            "absolute right-4 top-4 md:right-8 md:top-8"
+            buttonVariants({ variant: 'ghost' }),
+            'absolute right-4 top-4 md:right-8 md:top-8',
           )}
         >
-          {login.login_button_label}
+          {appData.login.login_button_label}
         </Link>
         <div className="relative hidden h-full flex-col bg-muted p-10 text-white dark:border-r lg:flex">
           <div className="absolute inset-0 bg-zinc-900" />
@@ -33,14 +34,16 @@ function App() {
             >
               <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
             </svg>
-            {branding.company_name}
+            {appData.branding.company_name}
           </div>
           <div className="relative z-20 mt-auto">
             <blockquote className="space-y-2">
               <p className="text-lg">
-                &ldquo;{branding.testimony_quote}&rdquo;
+                &ldquo;{appData.branding.testimony_quote}&rdquo;
               </p>
-              <footer className="text-sm">{branding.testimony_author}</footer>
+              <footer className="text-sm">
+                {appData.branding.testimony_author}
+              </footer>
             </blockquote>
           </div>
         </div>
@@ -48,22 +51,22 @@ function App() {
           <div className="mx-auto flex w-full flex-col justify-center space-y-6 ">
             <div className="flex flex-col space-y-2 text-center">
               <h1 className="text-2xl font-semibold tracking-tight">
-                {signup.signup_title}
+                {appData.signup.signup_title}
               </h1>
               <p className="text-sm text-muted-foreground">
-                {signup.signup_subtitle}
+                {appData.signup.signup_subtitle}
               </p>
             </div>
             <UserAuthForm />
             <p className="px-8 text-center text-sm text-muted-foreground">
-              By clicking continue, you agree to our{" "}
+              By clicking continue, you agree to our{' '}
               <Link
                 to="/terms"
                 className="underline underline-offset-4 hover:text-primary"
               >
                 Terms of Service
-              </Link>{" "}
-              and{" "}
+              </Link>{' '}
+              and{' '}
               <Link
                 to="/privacy"
                 className="underline underline-offset-4 hover:text-primary"
@@ -76,6 +79,6 @@ function App() {
         </div>
       </div>
     </>
-  );
+  )
 }
-export default App;
+export default App
