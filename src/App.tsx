@@ -15,27 +15,33 @@ const App: React.FC = () => {
   let [balanceTrans, setBalanceTrans] = useState<Stripe.BalanceTransaction[]>(
     [],
   )
-  const stripe = new Stripe(
-    'sk_test_51ANTqzFuMobrpxHlxHbI9cO77ROzylZe9XKItVqkUGmp8yrhWt0mqVcUMZ1dUlDwvV4Mb2x6ng51JS9Bin2dIKQk00ulhsURc2',
-    {
-      apiVersion: '2023-08-16',
-    },
-  )
+  const stripe = new Stripe(import.meta.env.VITE_STRIPE_API_KEY, {
+    apiVersion: '2023-08-16',
+  })
 
   const getBalanceTransactions = async () => {
     setIsLoading(true)
-    const balanceTransactions = await stripe.balanceTransactions.list()
-    setBalanceTrans((balanceTrans = balanceTransactions.data))
-    setIsLoading(false)
+    try {
+      if (!import.meta.env.VITE_STRIPE_API_KEY) {
+        setIsLoading(false)
+        return
+      }
+      const balanceTransactions = await stripe.balanceTransactions.list()
+      setBalanceTrans((balanceTrans = balanceTransactions.data))
+      setIsLoading(false)
+    } catch (e) {
+      setBalanceTrans((balanceTrans = []))
+      setIsLoading(false)
+    }
   }
 
   useEffect(() => {
     getBalanceTransactions()
-  }, [])
+  }, [import.meta.env.VITE_STRIPE_API_KEY])
 
   return (
     <main className="p-10">
-      {isLoading && balanceTrans.length === 0 ? (
+      {isLoading ? (
         <>
           <svg
             id="infinite-indicator"
