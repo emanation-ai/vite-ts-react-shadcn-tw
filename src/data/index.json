@@ -17,10 +17,10 @@
             "href": "#"
         }
     ],
-    "hero_banner_title": "Data to enrich your online business",
-    "hero_banner_desc": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.",
-    "hero_primary_call_to_action": "Get started",
-    "hero_secondary_call_to_action": "Learn more",
+    "title": "Data to enrich your online business",
+    "description": "Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.",
+    "primary_btn": "Get started",
+    "secondary_btn": "Learn more",
     "footer_navigation": {
         "links": [
             {

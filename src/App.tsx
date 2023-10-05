@@ -22,24 +22,21 @@ function App() {
           <div className="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
             <div className="text-center">
               <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
-                {appData.hero_banner_title}
+                {appData.title}
               </h1>
-              <p className="mt-6 text-lg leading-8">
-                {appData.hero_banner_desc}
-              </p>
+              <p className="mt-6 text-lg leading-8">{appData.description}</p>
               <div className="mt-10 flex items-center justify-center gap-x-6">
                 <a
                   href="#"
                   className="rounded-md bg-white border px-3.5 py-2.5 text-sm font-semibold shadow-sm hover:bg-gray-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                 >
-                  {appData.hero_primary_call_to_action}
+                  {appData.primary_btn}
                 </a>
                 <a
                   href="#"
                   className="text-sm font-semibold leading-6 px-3.5 py-2.5"
                 >
-                  {appData.hero_secondary_call_to_action}{' '}
-                  <span aria-hidden="true">→</span>
+                  {appData.secondary_btn} <span aria-hidden="true">→</span>
                 </a>
               </div>
             </div>
