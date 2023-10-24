@@ -1,24 +1,25 @@
-import { useContext } from 'react'
-import { Button } from '@/components/ui/button'
+import { useContext } from "react";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { CalendarDateRangePicker } from '@/components/app/date-range-picker'
-import { MainNav } from '@/components/app/main-nav'
-import { Overview } from '@/components/app/overview'
-import { RecentSales } from '@/components/app/recent-sales'
-import { Search } from '@/components/app/search'
-import TeamSwitcher from '@/components/app/team-switcher'
-import { UserNav } from '@/components/app/user-nav'
-import { AppContext, IGlobalDataType } from './contexts/AppContextData'
+} from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { CalendarDateRangePicker } from "@/components/app/date-range-picker";
+import { MainNav } from "@/components/app/main-nav";
+import { Overview } from "@/components/app/overview";
+import { RecentSales } from "@/components/app/recent-sales";
+import { Search } from "@/components/app/search";
+import TeamSwitcher from "@/components/app/team-switcher";
+import { UserNav } from "@/components/app/user-nav";
+import { AppContext, IGlobalDataType } from "./contexts/AppContextData";
+import ApiComponent from "@/a-components/index";
 
 function App() {
-  const appData = useContext<IGlobalDataType>(AppContext)
+  const appData = useContext<IGlobalDataType>(AppContext);
 
   return (
     <>
@@ -113,7 +114,8 @@ function App() {
           </Tabs>
         </div>
       </div>
+      <ApiComponent />
     </>
-  )
+  );
 }
-export default App
+export default App;
