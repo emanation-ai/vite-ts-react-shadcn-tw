@@ -1,11 +1,12 @@
+import Component from "./components/index";
 function App() {
   return (
     <>
-      <div>
-        Base
+      <div className="text-center mt-10">
+        <Component />
       </div>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
